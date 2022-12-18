@@ -4,7 +4,8 @@ public class FigurePainter {
     public static void main(String[] args) {
 
         /*
-        Printing a half pyramid
+        Printing a half pyramid normal e vonc vor te ha ձևի համաի մի բան փոխեք commit areq eli
+
         #
         ##
         ###
