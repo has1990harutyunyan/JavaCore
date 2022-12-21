@@ -8,8 +8,6 @@ public class Area {
         r = 10.8;// radius of circle
         pi = 3.1416;
         a = pi * r * r;
-        System.out.println( "Area of circle is " + a);
-
 
     }
 }
