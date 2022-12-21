@@ -2,7 +2,7 @@ package homework.homework2;
 
 public class ArrayUtil {
     public static void main(String[] args) {
-        int[] array = {45, 5, 15, 5522, 85, 999, 101, -5, 26, 100};
+        int[] array = {45, 0, -1, 5522, 85, 999, 10001, 5, 26, 100};
 
 
         // printing all values
