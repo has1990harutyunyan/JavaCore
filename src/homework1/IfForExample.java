@@ -12,7 +12,8 @@ public class IfForExample {
 
         if (a < b) {
             System.out.println("The variable \'a' is smaller than \'b'. " + "The value of \'b' is " + b + " .");
-        } else {
+        }
+        if (a > b) {
             System.out.println("The variable \'a' is greater than \'b'. " + "The value of \'a' is " + a + " .");
         }
 
