@@ -48,33 +48,25 @@ public class FigurePainter2 {
 
             for (int j = 3; j >= i; j--) {
                 System.out.print(" ");
-
             }
             for (int k = 1; k <= i; k++) {
                 System.out.print(" *");
-
             }
-
             System.out.println();
         }
 
 
         for (int i = 1; i <= 3; i++) {
-
             for (int l = 1; l <= i; l++) {
                 System.out.print(" ");
-
             }
             for (int m = 3; m >= i; m--) {
                 System.out.print(" *");
-
             }
             System.out.println();
 
         }
 
-
-//            }
 
 
     }

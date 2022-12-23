@@ -16,21 +16,16 @@ public class ArrayUtil {
         for (int value : array) {
             if (maxValue < value) {
                 maxValue = value;
-
             }
-
         }
-
         System.out.println("The max value is this array is " + maxValue);
 
         //printing min value
         int minValue = array[0];
 
         for (int i = 0; i < array.length; i++) {
-
             if (minValue > array[i]) {
                 minValue = array[i];
-
             }
         }
 
