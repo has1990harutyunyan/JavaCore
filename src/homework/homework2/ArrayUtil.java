@@ -9,10 +9,9 @@ public class ArrayUtil {
 
         // printing all values
         for (int i = 0; i < array.length; i++) {
-
             System.out.println("Array" + "[" + i + "] " + "= " + array[i]);
-
         }
+
         //   printing max value
         int maxValue = array[0];
         for (int value : array) {
@@ -86,7 +85,6 @@ public class ArrayUtil {
             midElement2 = (array.length / 2);
             double midIndex = midElement2 + 0.5;
             System.out.println("The middle element in this array is " + array[(int) midIndex] + " under index " + midElement2);
-
         }
 
         // Same method as the previous one with different logic
@@ -94,8 +92,6 @@ public class ArrayUtil {
         if (array.length > 0 && array.length % 2 == 1) {
             midElement3 = (array.length - 1) / 2;
             System.out.println("The middle element in this array is " + array[midElement3] + " under index " + midElement3);
-
-
         }
 
     }
