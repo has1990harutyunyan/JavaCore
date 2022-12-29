@@ -4,7 +4,7 @@ import org.w3c.dom.ls.LSOutput;
 
 public class ArrayUtil {
     public static void main(String[] args) {
-        int[] array = {45, 0, -1, 5522, 85, 999, 1001, 5, 26, 100};
+        int[] array = {45, 0, -1, 5522, 85, 999, 1001, 5, 26, 100, 22};
 
 
         // printing all values
@@ -79,20 +79,21 @@ public class ArrayUtil {
             System.out.println("\nThe middle elements in this array are " + array[midElement1 - 1] + " and " + array[midElement1]);
 
         }
-        // Printing the middle element for odd array
-        double midElement2;
-        if (array.length % 2 == 1) {
-            midElement2 = (array.length / 2);
-            double midIndex = midElement2 + 0.5;
-            System.out.println("The middle element in this array is " + array[(int) midIndex] + " under index " + midElement2);
-        }
+//        // Printing the middle element for odd array
+//        double midElement2;
+//        if (array.length % 2 == 1) {
+//            midElement2 = (array.length / 2);
+//            double midIndex = midElement2 + 0.5;
+//            System.out.println("The middle element in this array is " + array[(int) midIndex] + " under index " + midElement2);
+//        }
 
         // Same method as the previous one with different logic
         int midElement3;
         if (array.length > 0 && array.length % 2 == 1) {
-            midElement3 = (array.length - 1) / 2;
+            midElement3 = array.length  / 2;
             System.out.println("The middle element in this array is " + array[midElement3] + " under index " + midElement3);
         }
+
 
     }
 
