@@ -22,12 +22,11 @@ public class CharArrayExample {
 
 
         char[] chars3 = {'j', 'a', 'v', 'a', 'l', 'o', 'l', 'y'};
-        char lastItem = chars3[chars3.length-1];
+        char lastItem = chars3[chars3.length - 1];
         char secondToLastItem = chars3[chars3.length - 2];
         boolean expectedResult = secondToLastItem == 'l' && lastItem == 'y';
-        if (expectedResult) {
-            System.out.println("true");
-        }
+        System.out.println(expectedResult);
+
 
         char[] text = {' ', ' ', 'b', 'a', 'r', 'e', 'v', ' ', ' '};
         for (char value : text) {
