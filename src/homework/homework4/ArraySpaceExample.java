@@ -18,7 +18,6 @@ public class ArraySpaceExample {
             }
         }
 
-
         int newArrayLength =  firstNonEmptyIndexFromEnd- firstNonEmptyIndexFromStart + 1;
 
         char[] result = new char[newArrayLength];
