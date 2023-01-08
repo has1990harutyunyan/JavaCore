@@ -18,14 +18,12 @@ public class ArraySpaceExample {
             }
         }
 
-        int newArrayLength =  firstNonEmptyIndexFromEnd- firstNonEmptyIndexFromStart + 1;
+        int resultLength =  firstNonEmptyIndexFromEnd- firstNonEmptyIndexFromStart + 1;
 
-        char[] result = new char[newArrayLength];
+        char[] result = new char[resultLength];
         for (int i = firstNonEmptyIndexFromStart; i <= firstNonEmptyIndexFromEnd; i++) {
             result[i-1] = spaceArray[i];
-            System.out.print(spaceArray[i]);
         }
-        System.out.println();
 
         for (char value : result) {
             System.out.print(value);
