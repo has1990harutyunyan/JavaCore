@@ -19,7 +19,6 @@ public class ArraySpaceExample {
         }
 
         int resultLength =  firstNonEmptyIndexFromEnd- firstNonEmptyIndexFromStart + 1;
-
         char[] result = new char[resultLength];
         for (int i = firstNonEmptyIndexFromStart; i <= firstNonEmptyIndexFromEnd; i++) {
             result[i-1] = spaceArray[i];
@@ -28,6 +27,5 @@ public class ArraySpaceExample {
         for (char value : result) {
             System.out.print(value);
         }
-
     }
 }

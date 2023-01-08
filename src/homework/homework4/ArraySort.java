@@ -60,11 +60,7 @@ public class ArraySort {
         for (int value : numbers) {
             System.out.print(value + " ");
         }
-
-
     }
-
-
 }
 
 
