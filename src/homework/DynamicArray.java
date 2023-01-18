@@ -1,7 +1,6 @@
 package homework;
 
 
-
 public class DynamicArray {
 
     private int[] array = new int[10];
@@ -33,10 +32,25 @@ public class DynamicArray {
     }
 
     public int getByIndex(int index) {
-        if (index >= 0 && index <= size) {
-                return array[index];
+        if (index < 0 || index > size) {
+            return -1;
         }
-        return -1;
+        return array[index];
+    }
+
+    public void deleteByIndex(int index) {
+        if (index < 0 || index > size) {
+            System.out.println("Index is out of bounds.");
+            return;
+        }
+        for (int i = index; i < size; i++) {
+            array[i] = array[i + 1];
+        }
+        size--;
+        print();
+
     }
 
 }
+
+
