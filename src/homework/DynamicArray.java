@@ -1,6 +1,6 @@
 package homework;
 
-import java.net.Socket;
+
 
 public class DynamicArray {
 
@@ -27,16 +27,14 @@ public class DynamicArray {
     }
 
     public void print() {
-        for (int i : array) {
-            System.out.print(i + " ");
+        for (int i = 0; i < size; i++) {
+            System.out.print(array[i] + " ");
         }
     }
 
     public int getByIndex(int index) {
-        if (index >= 0 && index <= array.length - 1) {
-            for (int i = 0; i < array.length; i++) {
+        if (index >= 0 && index <= size) {
                 return array[index];
-            }
         }
         return -1;
     }
