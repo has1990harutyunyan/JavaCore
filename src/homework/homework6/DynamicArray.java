@@ -1,4 +1,4 @@
-package homework;
+package homework.homework6;
 
 
 public class DynamicArray {
@@ -51,6 +51,47 @@ public class DynamicArray {
 
     }
 
+    public void set(int index, int value) {
+        if (index < 0 || index > size) {
+            System.out.println("No such index exists.");
+            return;
+        }
+        array[index] = value;
+        print();
+    }
+
+    public void add(int index, int value) {
+        if (index < 0 || index > size) {
+            System.out.println("No such index exists. ");
+            return;
+        }
+        size++;
+
+        for (int i = size; i > index; i--) {
+            array[i] = array[i - 1];
+        }
+        array[index] = value;
+        print();
+    }
+
+    public boolean exists(int value) {
+        for (int i : array) {
+            if (i == value)
+                return true;
+        }
+        return false;
+    }
+
+    public int getIndexByValue(int value) {
+        for (int i = 0; i < size; i++) {
+            if (array[i] == value) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
+
+
 
 
