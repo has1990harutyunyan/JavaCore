@@ -57,7 +57,7 @@ public class DynamicArray {
             return;
         }
         array[index] = value;
-        print();
+
     }
 
     public void add(int index, int value) {
@@ -71,15 +71,18 @@ public class DynamicArray {
             array[i] = array[i - 1];
         }
         array[index] = value;
-        print();
+
     }
 
     public boolean exists(int value) {
+        boolean b = false;
         for (int i : array) {
-            if (i == value)
-                return true;
+            if (i == value) {
+                b = true;
+                break;
+            }
         }
-        return false;
+        return b;
     }
 
     public int getIndexByValue(int value) {

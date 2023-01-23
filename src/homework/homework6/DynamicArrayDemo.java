@@ -17,7 +17,7 @@ public class DynamicArrayDemo {
         System.out.println();
         dynamicArray.add(0, 9);
         System.out.println();
-        System.out.println(dynamicArray.exists(11));
+        System.out.println(dynamicArray.exists(911));
         System.out.println(dynamicArray.getIndexByValue(9));
 
     }
