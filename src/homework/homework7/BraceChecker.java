@@ -18,32 +18,32 @@ public class BraceChecker {
                     break;
             }
         }
-        Stack closingBrackets = new Stack();
-        for (int i = text.length() - 1; i >= 0; i--) {
-            switch (text.charAt(i)) {
+
+
+        String message = "Brackets match ";
+        for (int i = 0; i < text.length(); i++) {
+            char closingBrace = text.charAt(i);
+            switch (closingBrace) {
                 case ')':
                 case '}':
                 case ']':
-                    closingBrackets.push(text.charAt(i));
+                    char openingBrace = openingBrackets.pop();
+
+                    if (openingBrace == '(' && closingBrace == ')') {
+                        System.out.println(message + "opened " + openingBrace + " closed " + closingBrace + "at index " + i);
+                    } else if (openingBrace == '{' && closingBrace == '}') {
+                        System.out.println(message + "opened " + openingBrace + " closed " + closingBrace + "at index " + i);
+                    } else if (openingBrace == '[' && closingBrace == ']') {
+                        System.out.println(message + "opened " + openingBrace + " closed " + closingBrace + "at index " + i);
+                    } else {
+                        System.err.println("Error : Opened " + openingBrace + " but closed " + closingBrace + "at index " + i);
+                    }
                     break;
             }
         }
-        int size = openingBrackets.getSize();
-        for (int i = 0; i <= size; i++) {
-            String message = "Brackets match ";
-            char openingBrace = openingBrackets.pop();
-            char closingBrace = closingBrackets.pop();
-            if (openingBrace == '(' && closingBrace == ')') {
-                System.out.println(message + "opened " + openingBrace + " closed " + closingBrace);
-            } else if (openingBrace == '{' && closingBrace == '}') {
-                System.out.println(message + "opened " + openingBrace + " closed " + closingBrace);
-            } else if (openingBrace == '[' && closingBrace == ']') {
-                System.out.println(message + "opened " + openingBrace + " closed " + closingBrace);
-            } else {
-                System.err.println("Error : Opened " + openingBrace + " but closed " + closingBrace);
-            }
-
-
+        if (openingBrackets.getSize() >= 0) {
+            System.out.println(openingBrackets.pop() + " opened but not closed");
         }
+
     }
 }

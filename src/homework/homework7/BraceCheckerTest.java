@@ -4,8 +4,8 @@ public class BraceCheckerTest {
     public static void main(String[] args) {
 
 
-        BraceCheckerCopy braceCheckerC = new BraceCheckerCopy("I [love) (Java} (a lot)}");
-        braceCheckerC.check();
+        BraceChecker braceChecker = new BraceChecker("[(has)g(gg}]");
+        braceChecker.check();
 
 
     }
