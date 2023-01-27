@@ -4,7 +4,7 @@ public class BraceCheckerTest {
     public static void main(String[] args) {
 
 
-        BraceChecker braceChecker = new BraceChecker("[(has)g(gg}]");
+        BraceChecker braceChecker = new BraceChecker("vdcv[]jb((((((b]{)");
         braceChecker.check();
 
 

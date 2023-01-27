@@ -6,7 +6,7 @@ public class DynamicArray {
     private int[] array = new int[10];
     private int size = 0;
 
-    public void extend() {
+    private void extend() {
         int[] extendedArray = new int[array.length * 2];
         int index = 0;
         for (int i : array) {
