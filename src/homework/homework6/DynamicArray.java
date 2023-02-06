@@ -32,7 +32,7 @@ public class DynamicArray {
     }
 
     public int getByIndex(int index) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index > size - 1) {
             return -1;
         }
         return array[index];
@@ -43,8 +43,8 @@ public class DynamicArray {
             System.out.println("Index is out of bounds.");
             return;
         }
-        for (int i = index; i < size; i++) {
-            array[i] = array[i + 1];
+        for (int i = index + 1; i < size; i++) {
+            array[i - 1] = array[i];
         }
         size--;
         print();
@@ -52,7 +52,7 @@ public class DynamicArray {
     }
 
     public void set(int index, int value) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index > size - 1) {
             System.out.println("No such index exists.");
             return;
         }
@@ -61,17 +61,18 @@ public class DynamicArray {
     }
 
     public void add(int index, int value) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index > size - 1) {
             System.out.println("No such index exists. ");
             return;
         }
-        size++;
-
+        if (size == array.length) {
+            extend();
+        }
         for (int i = size; i > index; i--) {
             array[i] = array[i - 1];
         }
         array[index] = value;
-
+        size++;
     }
 
     public boolean exists(int value) {
@@ -93,6 +94,8 @@ public class DynamicArray {
         }
         return -1;
     }
+
+
 }
 
 
