@@ -1,6 +1,6 @@
 package homework.homework8;
 
-import javax.swing.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,7 +38,7 @@ public class EmployeeDemo {
 
     private static void idVerificationAndAddEmployee(String id, Employee employee) {
         boolean ifExists = storage.ifIdExists(id);
-        if (ifExists) {
+        if (!ifExists) {
             storage.addEmployee(employee);
         } else {
             System.out.println("Employee with such id already exists. ");
@@ -99,7 +99,7 @@ public class EmployeeDemo {
                     searchEmployeeByCompanyName();
                     break;
                 default:
-                    System.out.println(" Enter only 0 , 1, 2, 3 or 4");
+                    System.out.println("Enter only 0 , 1, 2, 3 or 4");
             }
 
         }

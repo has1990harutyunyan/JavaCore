@@ -3,7 +3,7 @@ package homework.homework8;
 import java.util.ArrayList;
 
 public class EmployeeStorage {
-    private Employee storage[] = new Employee[10];
+    private Employee[] storage = new Employee[10];
     private int size = -1;
 
     private void extend() {
@@ -15,14 +15,13 @@ public class EmployeeStorage {
     }
 
     public boolean ifIdExists(String id) {
-        if (size < 0)
-            return true;
+        boolean ifExists = false;
         for (int i = 0; i <= size; i++) {
             if (storage[i].getId().equals(id)) {
-                return false;
+                ifExists = true;
             }
         }
-        return true;
+        return ifExists;
     }
 
     public void addEmployee(Employee employee) {
@@ -51,13 +50,13 @@ public class EmployeeStorage {
     }
 
     public ArrayList<Employee> searchByCompanyName(String companyName) {
-        ArrayList<Employee> employeeArrayList = new ArrayList<>();
+        ArrayList<Employee> arrayList = new ArrayList<>();
         for (int i = 0; i <= size; i++) {
             if (storage[i].getCompany().toLowerCase().contains(companyName.toLowerCase())) {
-                employeeArrayList.add(storage[i]);
+                arrayList.add(storage[i]);
             }
         }
-        return employeeArrayList;
+        return arrayList;
 
     }
 }
