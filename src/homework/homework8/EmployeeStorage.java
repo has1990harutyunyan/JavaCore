@@ -1,5 +1,7 @@
 package homework.homework8;
 
+import java.util.ArrayList;
+
 public class EmployeeStorage {
     private Employee storage[] = new Employee[10];
     private int size = -1;
@@ -16,12 +18,12 @@ public class EmployeeStorage {
         if (size < 0)
             return true;
         for (int i = 0; i <= size; i++) {
-        if (storage[i].getId().equals(id)) {
-            return false;
+            if (storage[i].getId().equals(id)) {
+                return false;
+            }
         }
-    }
         return true;
-}
+    }
 
     public void addEmployee(Employee employee) {
         if (size == storage.length) {
@@ -48,12 +50,14 @@ public class EmployeeStorage {
         return null;
     }
 
-    public Employee searchByCompanyName(String companyName) {
+    public ArrayList<Employee> searchByCompanyName(String companyName) {
+        ArrayList<Employee> employeeArrayList = new ArrayList<>();
         for (int i = 0; i <= size; i++) {
             if (storage[i].getCompany().toLowerCase().contains(companyName.toLowerCase())) {
-                return storage[i];
+                employeeArrayList.add(storage[i]);
             }
         }
-        return null;
+        return employeeArrayList;
+
     }
 }
