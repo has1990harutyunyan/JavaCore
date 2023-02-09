@@ -20,13 +20,12 @@ public class EmployeeDemo {
         if (ifExists) {
             storage.addEmployee(employee);
         } else {
-            System.out.println("Employee with suck id already exists. ");
+            System.out.println("Employee with such id already exists. ");
         }
 
     }
 
     public static void main(String[] args) {
-        //  EmployeeStorage storage = new EmployeeStorage();
         Scanner scanner = new Scanner(System.in);
         boolean isRun = true;
         while (isRun) {
@@ -71,7 +70,8 @@ public class EmployeeDemo {
                     Employee matchEmployee = storage.searchByCompanyName(companyName);
                     foundEmployee(matchEmployee);
                     break;
-
+                default:
+                    System.out.println(" Enter only 0 , 1, 2, 3 or 4");
             }
 
         }
