@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class EmployeeDemo {
 
     private static final EmployeeStorage storage = new EmployeeStorage();
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     private static void foundEmployee(Employee employee) {
         if (employee != null) {
