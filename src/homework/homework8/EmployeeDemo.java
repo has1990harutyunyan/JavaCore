@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class EmployeeDemo {
 
-    static final EmployeeStorage storage = new EmployeeStorage();
+    private static final EmployeeStorage storage = new EmployeeStorage();
+    private static Scanner scanner = new Scanner(System.in);
 
     private static void foundEmployee(Employee employee) {
         if (employee != null) {
@@ -25,35 +26,44 @@ public class EmployeeDemo {
 
     }
 
+    private static void printCommands() {
+        System.out.println("For exiting the program, please, enter 0");
+        System.out.println("For adding an employee, please, enter 1");
+        System.out.println("For printing all the employees, please, enter 2");
+        System.out.println("For finding the employee by id, please, enter 3");
+        System.out.println("For finding the employee by company name, please, enter 4");
+    }
+
+    private static Employee createEmployee() {
+        System.out.println("Please enter the name");
+        String name = scanner.nextLine();
+        System.out.println("Please enter the surname");
+        String surname = scanner.nextLine();
+        System.out.println("Please enter the id");
+        String id = scanner.nextLine();
+        System.out.println("Please enter the salary");
+        String salary = scanner.nextLine();
+        System.out.println("Please enter the company");
+        String company = scanner.nextLine();
+        System.out.println("Please enter the position");
+        String position = scanner.nextLine();
+        return new Employee(name, surname, id, Double.parseDouble(salary), company, position);
+
+    }
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+
         boolean isRun = true;
         while (isRun) {
-            System.out.println("For exiting the program, please, enter 0");
-            System.out.println("For adding an employee, please, enter 1");
-            System.out.println("For printing all the employees, please, enter 2");
-            System.out.println("For finding the employee by id, please, enter 3");
-            System.out.println("For finding the employee by company name, please, enter 4");
+            printCommands();
             String input = scanner.nextLine();
             switch (input) {
                 case "0":
                     isRun = false;
                     break;
                 case "1":
-                    System.out.println("Please enter the name");
-                    String name = scanner.nextLine();
-                    System.out.println("Please enter the surname");
-                    String surname = scanner.nextLine();
-                    System.out.println("Please enter the id");
-                    String id = scanner.nextLine();
-                    System.out.println("Please enter the salary");
-                    String salary = scanner.nextLine();
-                    System.out.println("Please enter the company");
-                    String company = scanner.nextLine();
-                    System.out.println("Please enter the position");
-                    String position = scanner.nextLine();
-                    Employee employee = new Employee(name, surname, id, Double.parseDouble(salary), company, position);
-                    idVerificationAndAddEmployee(id, employee);
+                    Employee createdEmployee = createEmployee();
+                    idVerificationAndAddEmployee(createdEmployee.id, createdEmployee);
                     break;
                 case "2":
                     storage.printAllEmployees();
