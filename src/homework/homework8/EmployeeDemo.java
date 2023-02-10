@@ -1,87 +1,19 @@
 package homework.homework8;
 
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EmployeeDemo {
 
-    private static final EmployeeStorage storage = new EmployeeStorage();
-    private static final Scanner scanner = new Scanner(System.in);
-
-
-    static void printCommands() {
-        System.out.println("For exiting the program, please, enter 0");
-        System.out.println("For adding an employee, please, enter 1");
-        System.out.println("For printing all the employees, please, enter 2");
-        System.out.println("For finding the employee by id, please, enter 3");
-        System.out.println("For finding the employee by company name, please, enter 4");
-    }
-
-    static void createEmployee() {
-        System.out.println("Please enter the name");
-        String name = scanner.nextLine();
-        System.out.println("Please enter the surname");
-        String surname = scanner.nextLine();
-        System.out.println("Please enter the id");
-        String id = scanner.nextLine();
-        System.out.println("Please enter the salary");
-        String salary = scanner.nextLine();
-        System.out.println("Please enter the company");
-        String company = scanner.nextLine();
-        System.out.println("Please enter the position");
-        String position = scanner.nextLine();
-        Employee employee = new Employee(name, surname, id, Double.parseDouble(salary), company, position);
-        idVerificationAndAddEmployee(employee.id, employee);
-
-    }
-
-    private static void idVerificationAndAddEmployee(String id, Employee employee) {
-        boolean ifExists = storage.ifIdExists(id);
-        if (!ifExists) {
-            storage.addEmployee(employee);
-        } else {
-            System.out.println("Employee with such id already exists. ");
-        }
-
-    }
-
-
-    static void searchEmployeeById() {
-        System.out.println("Please, enter the id");
-        String employeeId = scanner.nextLine();
-        Employee employee = storage.searchById(employeeId);
-        if (employee != null) {
-            System.out.println(employee);
-        } else {
-            System.out.println("No such employee exists.");
-        }
-    }
-
-    static void searchEmployeeByCompanyName() {
-        System.out.println("Please, enter the company name");
-        String companyName = scanner.nextLine();
-        ArrayList<Employee> employees = storage.searchByCompanyName(companyName);
-        if (!employees.isEmpty()) {
-            for (Employee employee : employees) {
-                System.out.println(employee);
-            }
-        } else {
-            System.out.println("No such employee exists.");
-        }
-    }
-
-    static void printAllEmployees() {
-        storage.printAllEmployees();
-    }
-
+    private static final EmployeeStorage EMPLOYEE_STORAGE = new EmployeeStorage();
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void main(String[] args) {
 
         boolean isRun = true;
         while (isRun) {
             printCommands();
-            String input = scanner.nextLine();
+            String input = SCANNER.nextLine();
             switch (input) {
                 case "0":
                     isRun = false;
@@ -104,4 +36,68 @@ public class EmployeeDemo {
 
         }
     }
+
+    static void printCommands() {
+        System.out.println("For exiting the program, please, enter 0");
+        System.out.println("For adding an employee, please, enter 1");
+        System.out.println("For printing all the employees, please, enter 2");
+        System.out.println("For finding the employee by id, please, enter 3");
+        System.out.println("For finding the employee by company name, please, enter 4");
+    }
+
+    static void createEmployee() {
+        System.out.println("Please enter the name");
+        String name = SCANNER.nextLine();
+        System.out.println("Please enter the surname");
+        String surname = SCANNER.nextLine();
+        System.out.println("Please enter the id");
+        String id = SCANNER.nextLine();
+        System.out.println("Please enter the salary");
+        String salary = SCANNER.nextLine();
+        System.out.println("Please enter the company");
+        String company = SCANNER.nextLine();
+        System.out.println("Please enter the position");
+        String position = SCANNER.nextLine();
+        Employee employee = new Employee(name, surname, id, Double.parseDouble(salary), company, position);
+        if (EMPLOYEE_STORAGE.existsById(id)) {
+            System.err.println("Employee with such id already exists. ");
+        } else {
+            EMPLOYEE_STORAGE.addEmployee(employee);
+        }
+    }
+
+
+    static void searchEmployeeById() {
+        System.out.println("Please, enter the id");
+        String employeeId = SCANNER.nextLine();
+        Employee employee = EMPLOYEE_STORAGE.searchById(employeeId);
+        if (employee != null) {
+            System.out.println(employee);
+        } else {
+            System.out.println("No such employee exists.");
+        }
+    }
+
+    static void searchEmployeeByCompanyName() {
+        System.out.println("Please, enter the company name");
+        String companyName = SCANNER.nextLine();
+        Employee[] employees = EMPLOYEE_STORAGE.searchByCompanyName(companyName);
+        if (employees.length > 0) {
+            for (Employee employee : employees) {
+                if (employee == null) {
+                    break;
+                } else {
+                    System.out.println(employee);
+                }
+            }
+        } else {
+            System.out.println("No such employee exists.");
+        }
+    }
+
+    static void printAllEmployees() {
+        EMPLOYEE_STORAGE.printAllEmployees();
+    }
+
+
 }

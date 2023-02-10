@@ -14,7 +14,7 @@ public class EmployeeStorage {
         this.storage = newStorage;
     }
 
-    public boolean ifIdExists(String id) {
+    public boolean existsById(String id) {
         boolean ifExists = false;
         for (int i = 0; i <= size; i++) {
             if (storage[i].getId().equals(id)) {
@@ -49,14 +49,14 @@ public class EmployeeStorage {
         return null;
     }
 
-    public ArrayList<Employee> searchByCompanyName(String companyName) {
-        ArrayList<Employee> arrayList = new ArrayList<>();
+    public Employee[] searchByCompanyName(String companyName) {
+        Employee[] employees = new Employee[5];
         for (int i = 0; i <= size; i++) {
-            if (storage[i].getCompany().toLowerCase().contains(companyName.toLowerCase())) {
-                arrayList.add(storage[i]);
+            if (storage[i].getCompany().equalsIgnoreCase(companyName)) {
+                employees[i] = storage[i];
             }
         }
-        return arrayList;
+        return employees;
 
     }
 }
