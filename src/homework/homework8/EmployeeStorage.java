@@ -51,12 +51,16 @@ public class EmployeeStorage {
 
     public Employee[] searchByCompanyName(String companyName) {
         Employee[] employees = new Employee[5];
-        for (int i = 0; i <= size; i++) {
+        int size = 0;
+        for (int i = 0; i <= this.size; i++) {
             if (storage[i].getCompany().equalsIgnoreCase(companyName)) {
                 employees[i] = storage[i];
+                size++;
             }
         }
-        return employees;
+        if (size > 0) {
+            return employees;
+        } else return null;
 
     }
 }

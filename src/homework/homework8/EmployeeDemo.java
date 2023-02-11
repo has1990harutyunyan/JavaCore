@@ -82,7 +82,9 @@ public class EmployeeDemo {
         System.out.println("Please, enter the company name");
         String companyName = SCANNER.nextLine();
         Employee[] employees = EMPLOYEE_STORAGE.searchByCompanyName(companyName);
-        if (employees.length > 0) {
+        if (employees == null) {
+            System.out.println("No such employee exists.");
+        } else {
             for (Employee employee : employees) {
                 if (employee == null) {
                     break;
@@ -90,8 +92,6 @@ public class EmployeeDemo {
                     System.out.println(employee);
                 }
             }
-        } else {
-            System.out.println("No such employee exists.");
         }
     }
 
