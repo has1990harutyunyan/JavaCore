@@ -83,7 +83,7 @@ public class EmployeeStorage {
     }
 
     public Employee activateEmployeeById(String id) {
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i <= size; i++) {
             if (storage[i].getId().equals(id) && !storage[i].isActive()) {
                 storage[i].setActive(true);
             }
