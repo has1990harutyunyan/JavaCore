@@ -15,23 +15,17 @@ public class EmployeeDemo {
             printCommands();
             String input = SCANNER.nextLine();
             switch (input) {
-                case "0":
-                    isRun = false;
-                    break;
-                case "1":
-                    createEmployee();
-                    break;
-                case "2":
-                    printAllEmployees();
-                    break;
-                case "3":
-                    searchEmployeeById();
-                    break;
-                case "4":
-                    searchEmployeeByCompanyName();
-                    break;
-                default:
-                    System.out.println("Enter only 0 , 1, 2, 3 or 4");
+                case "0" -> isRun = false;
+                case "1" -> createEmployee();
+                case "2" -> printAllEmployees();
+                case "3" -> searchEmployeeById();
+                case "4" -> searchEmployeeByCompanyName();
+                case "5" -> searchEmployeeBySalaryRange();
+                case "6" -> updateEmployeePosition();
+                case "7" -> printActiveEmployees();
+                case "8" -> inactivateEmployee();
+                case "9" -> activateEmployee();
+                default -> System.out.println("Enter only 0 , 1, 2, 3 or 4");
             }
 
         }
@@ -43,6 +37,11 @@ public class EmployeeDemo {
         System.out.println("For printing all the employees, please, enter 2");
         System.out.println("For finding the employee by id, please, enter 3");
         System.out.println("For finding the employee by company name, please, enter 4");
+        System.out.println("For searching employees by salary range, place, enter 5");
+        System.out.println("For changing employee's position, please, enter 6");
+        System.out.println("For printing only active employees, please, enter 7");
+        System.out.println("For inactivating an employee , please, enter 8");
+        System.out.println("For activating an employee, please, enter 9");
     }
 
     static void createEmployee() {
@@ -59,6 +58,7 @@ public class EmployeeDemo {
         System.out.println("Please enter the position");
         String position = SCANNER.nextLine();
         Employee employee = new Employee(name, surname, id, Double.parseDouble(salary), company, position);
+        employee.setActive(true);
         if (EMPLOYEE_STORAGE.existsById(id)) {
             System.err.println("Employee with such id already exists. ");
         } else {
@@ -99,5 +99,65 @@ public class EmployeeDemo {
         EMPLOYEE_STORAGE.printAllEmployees();
     }
 
+    static void printActiveEmployees() {
+        EMPLOYEE_STORAGE.printActiveEmployees();
+    }
+
+    static void inactivateEmployee() {
+        System.out.println("Please, enter employee's id for inactivating.");
+        String id = SCANNER.nextLine();
+        Employee employee = EMPLOYEE_STORAGE.inactivateEmployeeById(id);
+        if (employee == null) {
+            System.out.println("Employee with such an id does not exist!");
+        } else {
+            System.out.println("Successfully inactivated");
+            System.out.println(employee);
+        }
+    }
+
+    static void activateEmployee() {
+        System.out.println("Please, enter employee's id for activating.");
+        String id = SCANNER.nextLine();
+        Employee employee = EMPLOYEE_STORAGE.activateEmployeeById(id);
+        if (employee == null) {
+            System.out.println("Employee with such an id does not exist!");
+        } else {
+            System.out.println("Successfully activated");
+            System.out.println(employee);
+        }
+    }
+
+    static void searchEmployeeBySalaryRange() {
+        System.out.println("PLease, enter the minimum salary");
+        String minSalary = SCANNER.nextLine();
+        System.out.println("PLease, enter the maximum salary");
+        String maxSalary = SCANNER.nextLine();
+        Employee[] employees = EMPLOYEE_STORAGE.searchBySalaryRange(Double.parseDouble(minSalary), Double.parseDouble(maxSalary));
+        if (employees == null) {
+            System.out.println("Employees with such salary range don't exist");
+        } else {
+            for (Employee employee : employees) {
+                if (employee == null) {
+                    break;
+                } else {
+                    System.out.println(employee);
+                }
+            }
+        }
+    }
+
+    static void updateEmployeePosition() {
+        System.out.println("Please, enter employee's id for changing position");
+        String id = SCANNER.nextLine();
+        System.out.println("Please, enter employee's new position");
+        String newPosition = SCANNER.nextLine();
+        Employee employee = EMPLOYEE_STORAGE.updateEmployeePositionById(id, newPosition);
+        if (employee == null) {
+            System.out.println("Employee with such an id does not exist!");
+        } else {
+            System.out.println("Successfully updated");
+            System.out.println(employee);
+        }
+    }
 
 }

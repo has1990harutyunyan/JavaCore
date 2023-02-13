@@ -10,6 +10,7 @@ public class Employee {
     double salary;
     String company;
     String position;
+    boolean active;
 
     public Employee() {
     }
@@ -71,6 +72,14 @@ public class Employee {
         this.position = position;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -79,6 +88,7 @@ public class Employee {
         Employee employee = (Employee) o;
 
         if (Double.compare(employee.salary, salary) != 0) return false;
+        if (active != employee.active) return false;
         if (!Objects.equals(name, employee.name)) return false;
         if (!Objects.equals(surname, employee.surname)) return false;
         if (!Objects.equals(id, employee.id)) return false;
@@ -97,6 +107,7 @@ public class Employee {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (company != null ? company.hashCode() : 0);
         result = 31 * result + (position != null ? position.hashCode() : 0);
+        result = 31 * result + (active ? 1 : 0);
         return result;
     }
 
@@ -109,6 +120,7 @@ public class Employee {
                 ", salary=" + salary +
                 ", company='" + company + '\'' +
                 ", position='" + position + '\'' +
+                ", active=" + active +
                 '}';
     }
 }
