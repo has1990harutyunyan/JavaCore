@@ -25,7 +25,7 @@ public class EmployeeDemo {
                 case "7" -> printActiveEmployees();
                 case "8" -> inactivateEmployee();
                 case "9" -> activateEmployee();
-                default -> System.out.println("Enter only 0 , 1, 2, 3 or 4");
+                default -> System.out.println("Enter only 0 , 1, 2, 3, 4, 5, 6, 7, 8 or 9");
             }
 
         }
