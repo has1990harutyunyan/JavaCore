@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class Employee {
 
-    String name;
-    String surname;
-    String id;
-    double salary;
-    String company;
-    String position;
-    boolean active;
+    private String name;
+    private String surname;
+    private String id;
+    private double salary;
+    private String company;
+    private String position;
+    private boolean active;
 
     public Employee() {
     }
