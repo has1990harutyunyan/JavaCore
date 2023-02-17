@@ -1,6 +1,9 @@
 package homework.homework8;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class EmployeeDemo {
@@ -8,7 +11,7 @@ public class EmployeeDemo {
     private static final EmployeeStorage EMPLOYEE_STORAGE = new EmployeeStorage();
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         boolean isRun = true;
         while (isRun) {
@@ -31,7 +34,7 @@ public class EmployeeDemo {
         }
     }
 
-    static void printCommands() {
+    private static void printCommands() {
         System.out.println("For exiting the program, please, enter 0");
         System.out.println("For adding an employee, please, enter 1");
         System.out.println("For printing all the employees, please, enter 2");
@@ -44,7 +47,7 @@ public class EmployeeDemo {
         System.out.println("For activating an employee, please, enter 9");
     }
 
-    static void createEmployee() {
+    private static void createEmployee() throws ParseException {
         System.out.println("Please enter the name");
         String name = SCANNER.nextLine();
         System.out.println("Please enter the surname");
@@ -57,7 +60,12 @@ public class EmployeeDemo {
         String company = SCANNER.nextLine();
         System.out.println("Please enter the position");
         String position = SCANNER.nextLine();
-        Employee employee = new Employee(name, surname, id, Double.parseDouble(salary), company, position);
+        System.out.println("Please enter birthday in dd/MM/yyyy format");
+        String birthday = SCANNER.nextLine();
+        SimpleDateFormat sdf =  new SimpleDateFormat("dd/MM/yyyy");
+        Date dateFormatBirthday = sdf.parse(birthday);
+        Employee employee = new Employee(name, surname, id, Double.parseDouble(salary), company, position,
+                new Date(), dateFormatBirthday);
         employee.setActive(true);
         if (EMPLOYEE_STORAGE.existsById(id)) {
             System.err.println("Employee with such id already exists. ");
@@ -67,7 +75,7 @@ public class EmployeeDemo {
     }
 
 
-    static void searchEmployeeById() {
+    private static void searchEmployeeById() {
         System.out.println("Please, enter the id");
         String employeeId = SCANNER.nextLine();
         Employee employee = EMPLOYEE_STORAGE.searchById(employeeId);
@@ -78,7 +86,7 @@ public class EmployeeDemo {
         }
     }
 
-    static void searchEmployeeByCompanyName() {
+    private static void searchEmployeeByCompanyName() {
         System.out.println("Please, enter the company name");
         String companyName = SCANNER.nextLine();
         Employee[] employees = EMPLOYEE_STORAGE.searchByCompanyName(companyName);
@@ -86,48 +94,48 @@ public class EmployeeDemo {
             System.out.println("No such employee exists.");
         } else {
             for (Employee employee : employees) {
-                if (employee == null) {
-                    break;
-                } else {
-                    System.out.println(employee);
-                }
+                System.out.println(employee);
             }
         }
     }
 
-    static void printAllEmployees() {
+
+    private static void printAllEmployees() {
         EMPLOYEE_STORAGE.printAllEmployees();
     }
 
-    static void printActiveEmployees() {
+    private static void printActiveEmployees() {
         EMPLOYEE_STORAGE.printActiveEmployees();
     }
 
-    static void inactivateEmployee() {
+    private static void inactivateEmployee() {
         System.out.println("Please, enter employee's id for inactivating.");
         String id = SCANNER.nextLine();
-        Employee employee = EMPLOYEE_STORAGE.inactivateEmployeeById(id);
+        Employee employee = EMPLOYEE_STORAGE.searchById(id);
         if (employee == null) {
             System.out.println("Employee with such an id does not exist!");
-        } else {
+        } else if (employee.isActive()) {
+            employee.setActive(false);
             System.out.println("Successfully inactivated");
-            System.out.println(employee);
+            System.out.println(EMPLOYEE_STORAGE.searchById(id));
         }
     }
 
-    static void activateEmployee() {
+    private static void activateEmployee() {
         System.out.println("Please, enter employee's id for activating.");
         String id = SCANNER.nextLine();
-        Employee employee = EMPLOYEE_STORAGE.activateEmployeeById(id);
+        Employee employee = EMPLOYEE_STORAGE.searchById(id);
         if (employee == null) {
             System.out.println("Employee with such an id does not exist!");
-        } else {
+        } else if (!employee.isActive()) {
+            employee.setActive(true);
             System.out.println("Successfully activated");
-            System.out.println(employee);
+            System.out.println(EMPLOYEE_STORAGE.searchById(id));
         }
+
     }
 
-    static void searchEmployeeBySalaryRange() {
+    private static void searchEmployeeBySalaryRange() {
         System.out.println("PLease, enter the minimum salary");
         String minSalary = SCANNER.nextLine();
         System.out.println("PLease, enter the maximum salary");
@@ -137,27 +145,25 @@ public class EmployeeDemo {
             System.out.println("Employees with such salary range don't exist");
         } else {
             for (Employee employee : employees) {
-                if (employee == null) {
-                    break;
-                } else {
-                    System.out.println(employee);
-                }
+                System.out.println(employee);
             }
         }
     }
 
-    static void updateEmployeePosition() {
+    private static void updateEmployeePosition() {
         System.out.println("Please, enter employee's id for changing position");
         String id = SCANNER.nextLine();
         System.out.println("Please, enter employee's new position");
         String newPosition = SCANNER.nextLine();
-        Employee employee = EMPLOYEE_STORAGE.updateEmployeePositionById(id, newPosition);
+        Employee employee = EMPLOYEE_STORAGE.searchById(id);
         if (employee == null) {
             System.out.println("Employee with such an id does not exist!");
         } else {
+            employee.setPosition(newPosition);
             System.out.println("Successfully updated");
-            System.out.println(employee);
+            System.out.println(EMPLOYEE_STORAGE.searchById(id));
         }
     }
+
 
 }

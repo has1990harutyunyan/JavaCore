@@ -1,5 +1,6 @@
 package homework.homework8;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class Employee {
@@ -11,17 +12,21 @@ public class Employee {
     private String company;
     private String position;
     private boolean active;
+    private Date registerDate;
+    private Date dateOfBirthday;
 
     public Employee() {
     }
 
-    public Employee(String name, String surname, String id, double salary, String company, String position) {
+    public Employee(String name, String surname, String id, double salary, String company, String position, Date registerDate, Date dateOfBirthday) {
         this.name = name;
         this.surname = surname;
         this.id = id;
         this.salary = salary;
         this.company = company;
         this.position = position;
+        this.registerDate = registerDate;
+        this.dateOfBirthday = dateOfBirthday;
     }
 
     public String getName() {
@@ -80,6 +85,22 @@ public class Employee {
         this.active = active;
     }
 
+    public Date getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    public Date getDateOfBirthday() {
+        return dateOfBirthday;
+    }
+
+    public void setDateOfBirthday(Date dateOfBirthday) {
+        this.dateOfBirthday = dateOfBirthday;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -93,7 +114,10 @@ public class Employee {
         if (!Objects.equals(surname, employee.surname)) return false;
         if (!Objects.equals(id, employee.id)) return false;
         if (!Objects.equals(company, employee.company)) return false;
-        return Objects.equals(position, employee.position);
+        if (!Objects.equals(position, employee.position)) return false;
+        if (!Objects.equals(registerDate, employee.registerDate))
+            return false;
+        return Objects.equals(dateOfBirthday, employee.dateOfBirthday);
     }
 
     @Override
@@ -108,6 +132,8 @@ public class Employee {
         result = 31 * result + (company != null ? company.hashCode() : 0);
         result = 31 * result + (position != null ? position.hashCode() : 0);
         result = 31 * result + (active ? 1 : 0);
+        result = 31 * result + (registerDate != null ? registerDate.hashCode() : 0);
+        result = 31 * result + (dateOfBirthday != null ? dateOfBirthday.hashCode() : 0);
         return result;
     }
 
@@ -121,6 +147,8 @@ public class Employee {
                 ", company='" + company + '\'' +
                 ", position='" + position + '\'' +
                 ", active=" + active +
+                ", registerDate=" + registerDate +
+                ", dateOfBirthday=" + dateOfBirthday +
                 '}';
     }
 }
