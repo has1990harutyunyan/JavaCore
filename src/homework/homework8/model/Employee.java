@@ -1,4 +1,6 @@
-package homework.homework8;
+package homework.homework8.model;
+
+import homework.homework8.util.DateUtil;
 
 import java.util.Date;
 import java.util.Objects;
@@ -11,7 +13,7 @@ public class Employee {
     private double salary;
     private String company;
     private String position;
-    private boolean active;
+    private boolean active = true;
     private Date registerDate;
     private Date dateOfBirthday;
 
@@ -147,8 +149,8 @@ public class Employee {
                 ", company='" + company + '\'' +
                 ", position='" + position + '\'' +
                 ", active=" + active +
-                ", registerDate=" + registerDate +
-                ", dateOfBirthday=" + dateOfBirthday +
+                ", registerDate=" + DateUtil.DateToString(registerDate) +
+                ", dateOfBirthday=" + DateUtil.DateToString(dateOfBirthday) +
                 '}';
     }
 }

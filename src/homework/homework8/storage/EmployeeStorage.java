@@ -1,5 +1,7 @@
-package homework.homework8;
+package homework.homework8.storage;
 
+
+import homework.homework8.model.Employee;
 
 public class EmployeeStorage {
     private Employee[] storage = new Employee[10];
