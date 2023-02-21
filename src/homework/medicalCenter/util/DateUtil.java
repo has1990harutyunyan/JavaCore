@@ -2,11 +2,13 @@ package homework.medicalCenter.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtil {
 
     private static final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
+    private static Calendar calendar = Calendar.getInstance();
 
 
     public static String dateToString(Date date) {
@@ -27,6 +29,16 @@ public class DateUtil {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public static int getDayOfMonth(Date date) {
+        calendar.setTime(date);
+        return calendar.get(Calendar.DAY_OF_MONTH);
+    }
+
+    public static int getTimeOfDay(Date date) {
+        calendar.setTime(date);
+        return calendar.get(Calendar.HOUR_OF_DAY);
     }
 
 }

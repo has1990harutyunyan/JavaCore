@@ -43,15 +43,17 @@ public class Storage {
     public Doctor[] findAllDoctors() {
         int count = 0;
 
-        for (int i = 0; i < size - 1; i++) {
+        for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Doctor) {
                 count++;
             }
         }
         Doctor[] doctors = new Doctor[count];
-        for (int i = 0; i < size - 1; i++) {
+        int j = 0;
+        for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Doctor doctor) {
-                doctors[i] = doctor;
+                doctors[j] = doctor;
+                j++;
             }
         }
         return doctors;
@@ -118,7 +120,7 @@ public class Storage {
         int count = 0;
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Patient patient) {
-                if (patient.getRegisterDate().before(date) && patient.getRegisterDate().after(date)) {
+                if (DateUtil.getDayOfMonth(patient.getRegisterDate()) == DateUtil.getDayOfMonth(date)) {
                     count++;
                 }
             }
@@ -126,10 +128,13 @@ public class Storage {
 
         int j = 0;
         Patient[] todayPatients = new Patient[count];
+
+
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Patient patient) {
-                if (patient.getRegisterDate().before(date) && patient.getRegisterDate().after(date)) {
+                if (DateUtil.getDayOfMonth(patient.getRegisterDate()) == DateUtil.getDayOfMonth(date)) {
                     todayPatients[j] = patient;
+                    j++;
                 }
             }
         }
@@ -166,7 +171,7 @@ public class Storage {
         Doctor doctor = (Doctor) person;
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Patient patient) {
-                if (patient.getDoctor().equals(doctor) && patient.getRegisterDate().equals(date)) {
+                if (patient.getDoctor().equals(doctor) && DateUtil.getTimeOfDay(patient.getRegisterDate()) == DateUtil.getTimeOfDay(date)) {
                     return true;
                 }
             }
