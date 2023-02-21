@@ -1,0 +1,169 @@
+package homework.medicalCenter;
+
+import homework.medicalCenter.model.Doctor;
+import homework.medicalCenter.model.Patient;
+import homework.medicalCenter.storage.DoctorStorage;
+import homework.medicalCenter.storage.PatientStorage;
+
+import java.util.Date;
+import java.util.Scanner;
+
+public class StorageDemo implements Commands {
+
+    private static final Scanner SCANNER = new Scanner(System.in);
+    private static final DoctorStorage DOCTOR_STORAGE = new DoctorStorage();
+    private static final PatientStorage PATIENT_STORAGE = new PatientStorage();
+
+
+    public static void main(String[] args) {
+        Doctor doctor1 = new Doctor("01", "Hasmik", "Harutyunyan", "123456", "gmail", "lor");
+        Doctor doctor2 = new Doctor("02", "Anna", "Harutyunyan", "663456", "mail", "lor");
+        Doctor doctor3 = new Doctor("03", "Mane", "Arakelyan", "999956", "mail", "lor");
+
+        DOCTOR_STORAGE.addDoctor(doctor1);
+        DOCTOR_STORAGE.addDoctor(doctor2);
+        DOCTOR_STORAGE.addDoctor(doctor3);
+
+
+        boolean isRun = true;
+        while (isRun) {
+            Commands.printCommands();
+            String command = SCANNER.nextLine();
+            switch (command) {
+                case EXIT -> isRun = false;
+                case ADD_DOCTOR -> addDoctor();
+                case SEARCH_DOCTOR_BY_PROFESSION -> searchDoctorByProfession();
+                case DELETE_DOCTOR_BY_ID -> deleteDoctorById();
+                case CHANGE_DOCTOR_DATA_BY_ID -> changeDoctorDataById();
+                case ADD_PATIENT -> addPatient();
+                case PRINT_ALL_PATIENTS_BY_DOCTOR -> printAllPatientsByDoctor();
+                case PRINT_TODAYS_PATIENTS -> printTodaysPatients();
+                case PRINT_ALL_DOCTORS -> printAllDoctors();
+                default -> System.out.println("Wrong command!");
+
+            }
+
+        }
+
+    }
+
+    private static void printTodaysPatients() {
+        Date date = new Date();
+        Patient[] todaysPatients = PATIENT_STORAGE.getTodaysPatients(date);
+        if (todaysPatients == null) {
+            System.out.println("No registered patients for today");
+        } else {
+            for (Patient todaysPatient : todaysPatients) {
+                System.out.println(todaysPatient);
+            }
+        }
+    }
+
+    private static void printAllPatientsByDoctor() {
+        DOCTOR_STORAGE.printAllDoctors();
+        System.out.println("Please input doctor's id");
+        String id = SCANNER.nextLine();
+        Doctor doctor = DOCTOR_STORAGE.getDoctorById(id);
+        if (doctor != null) {
+            Patient[] patientsByDoctor = PATIENT_STORAGE.getPatientsByDoctor(doctor);
+            if (patientsByDoctor == null) {
+                System.out.println("The doctor has no patients");
+            } else {
+                for (Patient patient : patientsByDoctor) {
+                    System.out.println(patient);
+
+                }
+            }
+        }
+    }
+
+    private static void addPatient() {
+        DOCTOR_STORAGE.printAllDoctors();
+        System.out.println("Please choose a doctor by enter doctor's id");
+        String id = SCANNER.nextLine();
+        Doctor doctorById = DOCTOR_STORAGE.getDoctorById(id);
+        System.out.println("Please input id, name, surname,phone number");
+        String patientDataStr = SCANNER.nextLine();
+        String[] patientData = patientDataStr.split(",");
+        Date date = new Date();
+        boolean ifRegistered = PATIENT_STORAGE.ifAlreadyRegistered(doctorById, date);
+        if (!ifRegistered) {
+            Patient patient = new Patient(patientData[0], patientData[1], patientData[2], patientData[3], doctorById, new Date());
+            Patient patientById = PATIENT_STORAGE.getPatientById(patientData[0]);
+            if (patientById != null) {
+                System.out.println("Patient with such id already exists.");
+            } else {
+                PATIENT_STORAGE.addPatient(patient);
+                System.out.println("Successfully added");
+                System.out.println(patient);
+            }
+        } else {
+            System.out.println("Sorry, that date is already registered.");
+        }
+
+    }
+
+    private static void changeDoctorDataById() {
+        DOCTOR_STORAGE.printAllDoctors();
+        System.out.println("Please input id");
+        String id = SCANNER.nextLine();
+        Doctor doctorById = DOCTOR_STORAGE.getDoctorById(id);
+        if (doctorById == null) {
+            System.out.println("Doctor with " + id + " id does ot exit. Please input correct id from above");
+        } else {
+            System.out.println("Please input new data except id");
+            String doctorNewDataStr = SCANNER.nextLine();
+            String[] doctorNewData = doctorNewDataStr.split(",");
+            doctorById.setName(doctorNewData[0]);
+            doctorById.setSurname(doctorNewData[1]);
+            doctorById.setPhoneNumber(doctorNewData[2]);
+            doctorById.setEmail(doctorNewData[3]);
+            doctorById.setProfession(doctorNewData[4]);
+            System.out.println(doctorById);
+
+        }
+    }
+
+    private static void printAllDoctors() {
+        DOCTOR_STORAGE.printAllDoctors();
+    }
+
+    private static void deleteDoctorById() {
+        DOCTOR_STORAGE.printAllDoctors();
+        System.out.println("Please, choose the id");
+        String id = SCANNER.nextLine();
+        DOCTOR_STORAGE.deleteDoctorById(id);
+        DOCTOR_STORAGE.printAllDoctors();
+    }
+
+    private static void addDoctor() {
+        System.out.println("Please input id, name, surname, phone number, email and profession");
+        String doctorDataStr = SCANNER.nextLine();
+        String[] doctorData = doctorDataStr.split(",");
+        Doctor doctorById = DOCTOR_STORAGE.getDoctorById(doctorData[0]);
+        if (doctorById == null) {
+            Doctor doctor = new Doctor(doctorData[0], doctorData[1], doctorData[2], doctorData[3], doctorData[4], doctorData[5]);
+            DOCTOR_STORAGE.addDoctor(doctor);
+            System.out.println("Successfully added");
+            System.out.println(doctor);
+        } else {
+            System.out.println("Doctor with " + doctorData[0] + " already exists.");
+        }
+    }
+
+    private static void searchDoctorByProfession() {
+        System.out.println("Please input profession");
+        String profession = SCANNER.nextLine();
+        Doctor[] doctors = DOCTOR_STORAGE.searchDoctorByProfession(profession);
+        if (doctors == null) {
+            System.out.println("Doctors with profession" + profession + "don't exist");
+        } else {
+            for (Doctor doctor : doctors) {
+                System.out.println(doctor);
+
+            }
+        }
+    }
+
+
+}
