@@ -9,13 +9,19 @@ public class Patient extends Person {
     private Doctor doctor;
     private Date registerDate;
 
-    public Patient(String  id, String name, String surname, String phoneNumber, Doctor doctor, Date registerDate) {
+    public Patient(String id, String name, String surname, String phoneNumber, Doctor doctor, Date registerDate) {
         super(id, name, surname, phoneNumber);
         this.doctor = doctor;
         this.registerDate = registerDate;
     }
 
     public Patient() {
+    }
+
+    public Patient(String name, String surname, String phoneNumber, Doctor doctor, Date registerDate) {
+        super(name, surname, phoneNumber);
+        this.doctor = doctor;
+        this.registerDate = registerDate;
     }
 
     public Doctor getDoctor() {

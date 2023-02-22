@@ -20,6 +20,12 @@ public class Person {
     public Person() {
     }
 
+    public Person(String name, String surname, String phoneNumber) {
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getId() {
         return id;
     }

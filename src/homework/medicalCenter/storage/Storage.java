@@ -5,29 +5,50 @@ import homework.medicalCenter.model.Patient;
 import homework.medicalCenter.model.Person;
 import homework.medicalCenter.util.DateUtil;
 
-import javax.print.Doc;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.Arrays;
+import java.util.UUID;
 
 public class Storage {
 
     Person[] persons = new Person[10];
     int size = 0;
+    int doctorCount = 0;
+    int patientCount = 0;
 
     private void extend() {
-        if (size == persons.length) {
-            Person[] tmp = new Person[persons.length * 10];
-            System.arraycopy(persons, 0, tmp, 0, size);
-            this.persons = tmp;
-        }
+        persons = Arrays.copyOf(persons, persons.length * 10);
 
     }
 
-    public void add(Person person) {
+    private String uniqueIdGenerator() {
+        String idStr = UUID.randomUUID().toString();
+        boolean b = true;
+        for (int j = 0; j < size; j++) {
+            b = false;
+            if (persons[j].getId().equals(idStr)) {
+                b = true;
+                idStr = UUID.randomUUID().toString();
+            }
+        }
+        if (!b) {
+            return idStr;
+        } else return uniqueIdGenerator();
+}
+
+
+    public Person add(Person person) {
         if (size == persons.length) {
             extend();
         }
+        if (person instanceof Doctor) {
+            doctorCount++;
+        } else if (person instanceof Patient) {
+            patientCount++;
+        }
+        person.setId(uniqueIdGenerator());
         persons[size++] = person;
+        return person;
     }
 
 
@@ -41,14 +62,14 @@ public class Storage {
     }
 
     public Doctor[] findAllDoctors() {
-        int count = 0;
-
-        for (int i = 0; i < size; i++) {
-            if (persons[i] instanceof Doctor) {
-                count++;
-            }
-        }
-        Doctor[] doctors = new Doctor[count];
+//        int count = 0;
+//
+//        for (int i = 0; i < size; i++) {
+//            if (persons[i] instanceof Doctor) {
+//                count++;
+//            }
+//        }
+        Doctor[] doctors = new Doctor[doctorCount];
         int j = 0;
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Doctor doctor) {
@@ -61,14 +82,14 @@ public class Storage {
 
 
     public Patient[] findAllPatients() {
-        int count = 0;
-
-        for (int i = 0; i < size; i++) {
-            if (persons[i] instanceof Patient) {
-                count++;
-            }
-        }
-        Patient[] patients = new Patient[count];
+//        int count = 0;
+//
+//        for (int i = 0; i < size; i++) {
+//            if (persons[i] instanceof Patient) {
+//                count++;
+//            }
+//        }
+        Patient[] patients = new Patient[patientCount];
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Patient patient) {
                 patients[i] = patient;
@@ -120,7 +141,7 @@ public class Storage {
         int count = 0;
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Patient patient) {
-                if (DateUtil.getDayOfMonth(patient.getRegisterDate()) == DateUtil.getDayOfMonth(date)) {
+                if (DateUtil.dateToCalendar(patient.getRegisterDate()).compareTo(DateUtil.dateToCalendar(date)) == 0) {
                     count++;
                 }
             }
@@ -128,11 +149,9 @@ public class Storage {
 
         int j = 0;
         Patient[] todayPatients = new Patient[count];
-
-
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Patient patient) {
-                if (DateUtil.getDayOfMonth(patient.getRegisterDate()) == DateUtil.getDayOfMonth(date)) {
+                if (DateUtil.dateToCalendar(patient.getRegisterDate()).compareTo(DateUtil.dateToCalendar(date)) == 0) {
                     todayPatients[j] = patient;
                     j++;
                 }

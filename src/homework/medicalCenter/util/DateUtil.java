@@ -20,7 +20,7 @@ public class DateUtil {
     }
 
     public static Date stringToDate(String string) {
-        if (string == null) {
+        if (string == null || string.equals("")) {
             return null;
         }
         try {
@@ -40,6 +40,14 @@ public class DateUtil {
         calendar.setTime(date);
         return calendar.get(Calendar.HOUR_OF_DAY);
     }
+
+    public static Calendar dateToCalendar(Date date) {
+        calendar.setTime(date);
+        return calendar;
+
+    }
+
+
 
 }
 

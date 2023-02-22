@@ -15,6 +15,12 @@ public class Doctor extends Person {
     public Doctor() {
     }
 
+    public Doctor(String name, String surname, String phoneNumber, String email, String profession) {
+        super(name, surname, phoneNumber);
+        this.email = email;
+        this.profession = profession;
+    }
+
     public String getEmail() {
         return email;
     }
