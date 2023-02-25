@@ -31,14 +31,14 @@ public class DateUtil {
 
     }
 
-    public static int getDayOfMonth(Date date) {
-        calendar.setTime(date);
-        return calendar.get(Calendar.DAY_OF_MONTH);
-    }
 
     public static int getTimeOfDay(Date date) {
         calendar.setTime(date);
-        return calendar.get(Calendar.HOUR_OF_DAY);
+        return calendar.get(Calendar.HOUR_OF_DAY );
+    }
+    public static int getDayOfMonth(Date date) {
+        calendar.setTime(date);
+        return calendar.get(Calendar.DAY_OF_MONTH );
     }
 
     public static Calendar dateToCalendar(Date date) {

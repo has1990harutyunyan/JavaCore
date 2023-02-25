@@ -2,12 +2,12 @@ package homework.medicalCenter.model;
 
 import java.util.Objects;
 
-public class Person {
+public abstract class Person {
 
-  protected   String id;
-  protected   String name;
-   protected String surname;
-   protected String phoneNumber;
+    String id;
+    String name;
+    String surname;
+    String phoneNumber;
 
 
     public Person(String id, String name, String surname, String phoneNumber) {

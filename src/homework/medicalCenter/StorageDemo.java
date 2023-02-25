@@ -15,18 +15,7 @@ public class StorageDemo implements Commands {
 
 
     public static void main(String[] args) {
-        Doctor doctor1 = new Doctor("01", "Hasmik", "Harutyunyan", "123456", "gmail", "lor");
-        Doctor doctor2 = new Doctor("02", "Anna", "Harutyunyan", "663456", "mail", "gyn");
-        Doctor doctor3 = new Doctor("03", "Mane", "Arakelyan", "999956", "mail", "lor");
 
-        STORAGE.add(doctor1);
-        STORAGE.add(doctor2);
-        STORAGE.add(doctor3);
-
-        Patient patient = new Patient("22", "Poxos", "Poxosyan", "55555", doctor2, new Date());
-        STORAGE.add(patient);
-        Patient patient1 = new Patient("33", "Ptros", "Poxosyan", "55555", doctor2, new Date());
-        STORAGE.add(patient1);
         boolean isRun = true;
         while (isRun) {
             Commands.printCommands();
@@ -39,7 +28,7 @@ public class StorageDemo implements Commands {
                 case CHANGE_DOCTOR_DATA_BY_ID -> changeDoctorDataById();
                 case ADD_PATIENT -> addPatient();
                 case PRINT_ALL_PATIENTS_BY_DOCTOR -> printAllPatientsByDoctor();
-                case PRINT_TODAYS_PATIENTS -> printTodaysPatients();
+                case PRINT_TODAYS_PATIENTS -> printTodayPatients();
                 case PRINT_ALL_DOCTORS -> printAllDoctors();
                 default -> System.out.println("Wrong command!");
 
@@ -49,9 +38,9 @@ public class StorageDemo implements Commands {
 
     }
 
-    private static void printTodaysPatients() {
+    private static void printTodayPatients() {
         Date date = new Date();
-        Patient[] todaysPatients = STORAGE.getTodaysPatients(date);
+        Patient[] todaysPatients = STORAGE.getTodayPatients(date);
         if (todaysPatients == null) {
             System.out.println("No registered patients for today");
         } else {

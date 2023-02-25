@@ -23,18 +23,15 @@ public class Storage {
 
     private String uniqueIdGenerator() {
         String idStr = UUID.randomUUID().toString();
-        boolean b = true;
-        for (int j = 0; j < size; j++) {
-            b = false;
-            if (persons[j].getId().equals(idStr)) {
-                b = true;
+        for (int i = 0; i < size; i++) {
+            if (persons[i].getId().equals(idStr)) {
                 idStr = UUID.randomUUID().toString();
+                i = 0;
             }
         }
-        if (!b) {
-            return idStr;
-        } else return uniqueIdGenerator();
-}
+        return idStr;
+
+    }
 
 
     public Person add(Person person) {
@@ -62,13 +59,6 @@ public class Storage {
     }
 
     public Doctor[] findAllDoctors() {
-//        int count = 0;
-//
-//        for (int i = 0; i < size; i++) {
-//            if (persons[i] instanceof Doctor) {
-//                count++;
-//            }
-//        }
         Doctor[] doctors = new Doctor[doctorCount];
         int j = 0;
         for (int i = 0; i < size; i++) {
@@ -82,13 +72,7 @@ public class Storage {
 
 
     public Patient[] findAllPatients() {
-//        int count = 0;
-//
-//        for (int i = 0; i < size; i++) {
-//            if (persons[i] instanceof Patient) {
-//                count++;
-//            }
-//        }
+
         Patient[] patients = new Patient[patientCount];
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Patient patient) {
@@ -136,7 +120,7 @@ public class Storage {
         this.size--;
     }
 
-    public Patient[] getTodaysPatients(Date date) {
+    public Patient[] getTodayPatients(Date date) {
 
         int count = 0;
         for (int i = 0; i < size; i++) {
@@ -190,7 +174,9 @@ public class Storage {
         Doctor doctor = (Doctor) person;
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Patient patient) {
-                if (patient.getDoctor().equals(doctor) && DateUtil.getTimeOfDay(patient.getRegisterDate()) == DateUtil.getTimeOfDay(date)) {
+                if (patient.getDoctor().equals(doctor) && DateUtil.
+                        getTimeOfDay(patient.getRegisterDate()) == DateUtil.getTimeOfDay(date) && DateUtil.getDayOfMonth(patient.getRegisterDate()) ==
+                        DateUtil.getDayOfMonth(date)) {
                     return true;
                 }
             }
