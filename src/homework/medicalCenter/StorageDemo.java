@@ -106,14 +106,22 @@ public class StorageDemo implements Commands {
         if (doctorById == null) {
             System.out.println("Doctor with " + id + " id does ot exit. Please input correct id from above");
         } else {
-            System.out.println("Please input new data except id");
+            Profession[] values = Profession.values();
+            for (Profession value : values) {
+                System.out.print(value + " ");
+            }
+            System.out.println();
+            System.out.println("Please input the new profession");
+            String professionStr = SCANNER.nextLine();
+            Profession profession = Profession.valueOf(professionStr);
+            System.out.println("Please input new data (name, surname,phone number, email");
             String doctorNewDataStr = SCANNER.nextLine();
             String[] doctorNewData = doctorNewDataStr.split(",");
             doctorById.setName(doctorNewData[0]);
             doctorById.setSurname(doctorNewData[1]);
             doctorById.setPhoneNumber(doctorNewData[2]);
             doctorById.setEmail(doctorNewData[3]);
-            doctorById.setProfession(doctorNewData[4]);
+            doctorById.setProfession(profession);
             System.out.println(doctorById);
 
         }
@@ -141,18 +149,32 @@ public class StorageDemo implements Commands {
     }
 
     private static void addDoctor() {
-        System.out.println("Please input name, surname, phone number, email and profession");
+        Profession[] values = Profession.values();
+        for (Profession value : values) {
+            System.out.print(value + " ");
+        }
+        System.out.println();
+        System.out.println("Please input the profession");
+        String professionStr = SCANNER.nextLine();
+        Profession profession = Profession.valueOf(professionStr);
+        System.out.println("Please input name, surname, phone number, email");
         String doctorDataStr = SCANNER.nextLine();
         String[] doctorData = doctorDataStr.split(",");
-        Doctor doctor = new Doctor(doctorData[0], doctorData[1], doctorData[2], doctorData[3], doctorData[4]);
+        Doctor doctor = new Doctor(doctorData[0], doctorData[1], doctorData[2], doctorData[3], profession);
         Person addedDoctor = STORAGE.add(doctor);
         System.out.println("Successfully added");
         System.out.println(addedDoctor);
     }
 
     private static void searchDoctorByProfession() {
-        System.out.println("Please input profession");
-        String profession = SCANNER.nextLine();
+        Profession[] values = Profession.values();
+        for (Profession value : values) {
+            System.out.print(value + " ");
+        }
+        System.out.println();
+        System.out.println("Please input the profession");
+        String professionStr = SCANNER.nextLine();
+        Profession profession = Profession.valueOf(professionStr);
         Doctor[] doctors = STORAGE.searchDoctorByProfession(profession);
         if (doctors == null) {
             System.out.println("Doctors with profession" + profession + "don't exist");

@@ -82,28 +82,29 @@ public class Storage {
         return patients;
     }
 
-    public Doctor[] searchDoctorByProfession(String profession) {
+    public Doctor[] searchDoctorByProfession(Enum profession) {
         int count = 0;
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Doctor doctor) {
-                if (doctor.getProfession().equals(profession)) {
+                if (doctor.getProfession() == (profession)) {
                     count++;
                 }
             }
         }
         Doctor[] doctors = new Doctor[count];
+        if (doctors.length == 0) {
+            return null;
+        }
         int j = 0;
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Doctor doctor) {
-                if (doctor.getProfession().equals(profession)) {
+                if (doctor.getProfession() == (profession)) {
                     doctors[j] = (Doctor) persons[i];
                     j++;
                 }
             }
         }
         return doctors;
-
-
     }
 
     public void deleteById(String id) {

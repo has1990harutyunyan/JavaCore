@@ -1,12 +1,14 @@
 package homework.medicalCenter.model;
 
+import homework.medicalCenter.Profession;
+
 import java.util.Objects;
 
 public class Doctor extends Person {
     private String email;
-    private String profession;
+    private Profession profession;
 
-    public Doctor(String id, String name, String surname, String phoneNumber, String email, String profession) {
+    public Doctor(String id, String name, String surname, String phoneNumber, String email, Profession profession) {
         super(id, name, surname, phoneNumber);
         this.email = email;
         this.profession = profession;
@@ -15,7 +17,7 @@ public class Doctor extends Person {
     public Doctor() {
     }
 
-    public Doctor(String name, String surname, String phoneNumber, String email, String profession) {
+    public Doctor(String name, String surname, String phoneNumber, String email, Profession profession) {
         super(name, surname, phoneNumber);
         this.email = email;
         this.profession = profession;
@@ -29,11 +31,11 @@ public class Doctor extends Person {
         this.email = email;
     }
 
-    public String getProfession() {
+    public Profession getProfession() {
         return profession;
     }
 
-    public void setProfession(String profession) {
+    public void setProfession(Profession profession) {
         this.profession = profession;
     }
 
@@ -46,7 +48,7 @@ public class Doctor extends Person {
         Doctor doctor = (Doctor) o;
 
         if (!Objects.equals(email, doctor.email)) return false;
-        return Objects.equals(profession, doctor.profession);
+        return profession == doctor.profession;
     }
 
     @Override
