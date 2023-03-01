@@ -173,8 +173,7 @@ public class StorageDemo implements Commands {
         }
         System.out.println();
         System.out.println("Please input the profession");
-        String professionStr = SCANNER.nextLine();
-        Profession profession = Profession.valueOf(professionStr);
+        String profession = SCANNER.nextLine();
         Doctor[] doctors = STORAGE.searchDoctorByProfession(profession);
         if (doctors == null) {
             System.out.println("Doctors with profession" + profession + "don't exist");

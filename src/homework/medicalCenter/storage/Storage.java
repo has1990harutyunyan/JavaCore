@@ -82,11 +82,11 @@ public class Storage {
         return patients;
     }
 
-    public Doctor[] searchDoctorByProfession(Enum profession) {
+    public Doctor[] searchDoctorByProfession(String profession) {
         int count = 0;
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Doctor doctor) {
-                if (doctor.getProfession() == (profession)) {
+                if (doctor.getProfession().name().equals(profession)) {
                     count++;
                 }
             }
@@ -98,7 +98,7 @@ public class Storage {
         int j = 0;
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Doctor doctor) {
-                if (doctor.getProfession() == (profession)) {
+                if (doctor.getProfession().name().equals(profession)) {
                     doctors[j] = (Doctor) persons[i];
                     j++;
                 }
