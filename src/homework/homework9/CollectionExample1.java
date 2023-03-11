@@ -13,6 +13,25 @@ public class CollectionExample1 {
     private static final List<String> ARRAY_LIST = new ArrayList<>();
     private static final List<String> LINKED_LIST = new LinkedList<>();
 
+    public static void main(String[] args) {
+        //function 1 invocation
+        insertByIndex();
+        printList(ARRAY_LIST);
+
+        //function 2 invocation
+        boolean exists = exists();
+        if (exists) {
+            System.out.println("The name exists in the list");
+        } else {
+            System.out.println("The name does not exist");
+        }
+
+        //function 3 invocation
+        remove();
+        printList(LINKED_LIST);
+    }
+
+
     //Գրեք կոդ, որ մարդը ներմուծի անուն, ու ինչ որ ինդեքս, դուք էդ ինդեքսի տակ տանեք էդ անունը դնեք.
     private static void insertByIndex() {
         //for Test
@@ -53,21 +72,5 @@ public class CollectionExample1 {
         }
     }
 
-    public static void main(String[] args) {
-        //function 1 invocation
-        insertByIndex();
-        printList(ARRAY_LIST);
 
-        //function 2 invocation
-        boolean exists = exists();
-        if (exists) {
-            System.out.println("The name exists in the list");
-        } else {
-            System.out.println("The name does not exist");
-        }
-
-        //function 3 invocation
-        remove();
-        printList(LINKED_LIST);
-    }
 }
