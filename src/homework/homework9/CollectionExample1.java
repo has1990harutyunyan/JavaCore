@@ -69,6 +69,7 @@ public class CollectionExample1 {
     private static void printList(@NotNull List<?> list) {
         for (Object o : list) {
             System.out.println(o);
+
         }
     }
 
