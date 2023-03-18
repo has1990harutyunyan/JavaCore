@@ -19,8 +19,7 @@ public class CollectionExample1 {
         printList(ARRAY_LIST);
 
         //function 2 invocation
-        boolean exists = exists();
-        if (exists) {
+        if (exists()) {
             System.out.println("The name exists in the list");
         } else {
             System.out.println("The name does not exist");
@@ -30,19 +29,17 @@ public class CollectionExample1 {
         remove();
         printList(LINKED_LIST);
     }
-
-
     //Գրեք կոդ, որ մարդը ներմուծի անուն, ու ինչ որ ինդեքս, դուք էդ ինդեքսի տակ տանեք էդ անունը դնեք.
     private static void insertByIndex() {
         //for Test
-        ARRAY_LIST.add("Hasmik");
-        ARRAY_LIST.add("Mane");
+//        ARRAY_LIST.add("Hasmik");
+//        ARRAY_LIST.add(1, "bdchd");
         try {
             System.out.println("Please, input index and element");
             String indexAndNameStr = SCANNER.nextLine();
             String[] indexAndName = indexAndNameStr.split(",");
             ARRAY_LIST.add(Integer.parseInt(indexAndName[0]), indexAndName[1]);
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("The index is out of bounds");
         }
     }

@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a3d5487-a855-465a-8f97-5f9de232c40b" name="Changes" comment="medical center">
+    <list default="true" id="6a3d5487-a855-465a-8f97-5f9de232c40b" name="Changes" comment="Collection practice">
+      <change afterPath="$PROJECT_DIR$/src/homework/fileUtil/FileUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Core/Collections.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Core/homework/homework9/CollectionExample1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Core/homework/homework9/CollectionExample1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Core/homework/homework9/CollectionExample2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Core/homework/homework9/CollectionExample2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CollectionEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Collections.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/homework/homework9/CollectionExample1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/homework/homework9/CollectionExample1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,13 +59,13 @@
       <recent name="homework.homework7" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CollectionExample2">
-    <configuration name="CollectionExample1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="homework.homework9.CollectionExample1" />
+  <component name="RunManager" selected="Application.FileUtil">
+    <configuration name="FileUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="homework.fileUtil.FileUtil" />
       <module name="Java Core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="homework.homework9.*" />
+          <option name="PATTERN" value="homework.fileUtil.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -66,12 +73,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CollectionExample2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="homework.homework9.CollectionExample2" />
+    <configuration name="StackDemo (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="homework.homeworkHovhannes.StackDemo" />
       <module name="Java Core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="homework.homework9.*" />
+          <option name="PATTERN" value="homework.homeworkHovhannes.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -79,19 +86,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Collections" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Collections" />
-      <module name="Java Core" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Fush" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="chapter7.Fush" />
+    <configuration name="StackDemo (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="homework.homeworkHovhannes.StackDemo" />
       <module name="Java Core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="chapter7.*" />
+          <option name="PATTERN" value="homework.homeworkHovhannes.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -99,12 +99,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StorageDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="homework.medicalCenter.StorageDemo" />
+    <configuration name="StackDemo (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="homework.homeworkHovhannes.StackDemo" />
       <module name="Java Core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="homework.medicalCenter.*" />
+          <option name="PATTERN" value="homework.homeworkHovhannes.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StackDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="homework.homeworkHovhannes.StackDemo" />
+      <module name="Java Core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="homework.homeworkHovhannes.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StackDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="homework.homeworkHovhannes.StackDemo" />
+      <module name="Java Core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="homework.homeworkHovhannes.priorityQueue.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StackDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="homework.homeworkHovhannes.StackDemo" />
+      <module name="Java Core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="homework.homeworkHovhannes.priorityQueue.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -114,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CollectionExample2" />
-        <item itemvalue="Application.CollectionExample1" />
-        <item itemvalue="Application.Collections" />
-        <item itemvalue="Application.StorageDemo" />
-        <item itemvalue="Application.Fush" />
+        <item itemvalue="Application.FileUtil" />
+        <item itemvalue="Application.StackDemo" />
+        <item itemvalue="Application.StackDemo (5)" />
+        <item itemvalue="Application.StackDemo (4)" />
+        <item itemvalue="Application.StackDemo (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -327,7 +366,35 @@
       <option name="project" value="LOCAL" />
       <updated>1678546175232</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="medical center">
+      <created>1678546254455</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1678546254455</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Collection practice">
+      <created>1678546382079</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1678546382079</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Collection practice">
+      <created>1678546399585</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1678546399585</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Collection practice">
+      <created>1678546432888</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1678546432888</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -335,7 +402,8 @@
     <MESSAGE value="BraceChecker" />
     <MESSAGE value="EmployeeStorage" />
     <MESSAGE value="medical center" />
-    <option name="LAST_COMMIT_MESSAGE" value="medical center" />
+    <MESSAGE value="Collection practice" />
+    <option name="LAST_COMMIT_MESSAGE" value="Collection practice" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -359,6 +427,26 @@
           <url>file://$PROJECT_DIR$/src/homework/medicalCenter/storage/Storage.java</url>
           <line>65</line>
           <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/homework/homeworkHovhannes/Stack.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/homework/fileUtil/FileUtil.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/homework/fileUtil/FileUtil.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/homework/fileUtil/FileUtil.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
